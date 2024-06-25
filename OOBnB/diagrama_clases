@@ -1,0 +1,49 @@
+@startuml
+
+class OOBnB {
+
+registrarUsuario(): Usuario
+}
+
+OOBnB --> "* usuarios" Usuario
+
+class Usuario {
+  nombre: String
+  direccion: String
+
+  registrarPropiedad(): Propiedad
+}
+
+
+class Propiedad {
+  nombre: String
+  descripcion: String
+  direccion: String
+  precioNoche: Double
+
+  precioReserva(reserva: Reserva): Double
+
+
+}
+
+Usuario --> "* propiedades" Propiedad
+
+class Reserva {
+  
+}
+
+Propiedad --> "* reservas" Reserva
+
+class Periodo {
+  inicio: Date
+  fin: Date
+  
+  incluyeFecha(fecha: Date)
+  coincide(otro: Periodo): Boolean
+  dias(): Integer
+  
+}
+
+Reserva --> "1 periodo" Periodo
+
+@enduml
